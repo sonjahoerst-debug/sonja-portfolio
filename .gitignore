@@ -57,3 +57,7 @@ ENV/
 # Local development
 .env
 .env.local
+assets/videos/Bildschirmaufnahme*.mov
+assets/videos/schweiz_video.mp4
+assets/videos/nasch_website.mp4
+assets/videos/web_app.mp4
