@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seite nicht gefunden - Sonja Hörst</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon_sonja.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon_sonja.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon_sonja.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .error-container {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .error-code {
+            font-size: 8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 0;
+            line-height: 1;
+        }
+        
+        .error-message {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin: 1rem 0 2rem;
+        }
+        
+        .error-text {
+            font-size: 1rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+        
+        .error-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: opacity 0.3s ease;
+        }
+        
+        .error-button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar" aria-label="Hauptnavigation">
+            <div class="logo">
+                <a href="index.html">Sonja Hörst</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="about.html">Über mich</a></li>
+                <li><a href="index.html#portfolio">Portfolio</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="error-container">
+            <h1 class="error-code">404</h1>
+            <h2 class="error-message">Seite nicht gefunden</h2>
+            <p class="error-text">
+                Die von dir gesuchte Seite existiert leider nicht. 
+                Vielleicht wurde sie verschoben oder der Link ist fehlerhaft.
+            </p>
+            <a href="index.html" class="error-button">Zur Startseite</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <div class="social-links">
+                    <a href="https://www.instagram.com/so_ho_illustration/?hl=de" target="_blank">Instagram</a>
+                    <a href="https://www.behance.net/sonjahrst" target="_blank">Behance</a>
+                    <a href="https://www.linkedin.com/in/sonja-h%C3%B6rst-74408121b" target="_blank">Linkedin</a>
+                </div>
+                
+                <div class="legal-links">
+                    <a href="cookies.html">Cookies</a>
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                </div>
+            </div>
+            
+            <div class="footer-contact">
+                <p><a href="#" class="email-placeholder" id="emailLink">hello@soho-design.net</a></p>
+                <p>Diese Website wurde bewusst ressourcenschonend und barrierearm umgesetzt.</p>
+                <p class="copyright">© 2026 Sonja Hörst.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

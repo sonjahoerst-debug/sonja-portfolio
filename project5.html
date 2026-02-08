@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de" class="project-page project-5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Design - Sonja Hörst</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon_sonja.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon_sonja.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon_sonja.png">
+    <!-- Preload kritischer Ressourcen für schnellere Ladezeit -->
+    <link rel="preload" href="css/styles.css" as="style">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Skip to main content link for screen readers -->
+    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+    
+    <header>
+        <nav class="navbar" aria-label="Hauptnavigation">
+            <div class="logo">
+                <a href="index.html">Sonja Hörst</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="about.html">Über mich</a></li>
+                <li><a href="index.html#portfolio">Portfolio</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <h1 class="visually-hidden">Nasch - Website und Login-System für Schul-Caterer</h1>
+        
+        <section class="project-hero">
+            <picture>
+                <source srcset="assets/images_webp/Bild_14 (1).webp" type="image/webp">
+                <img src="assets/images_webp/Bild_14 (1).webp" alt="Website Design" class="project-hero-image" loading="lazy">
+            </picture>
+        </section>
+
+        <section class="project-info">
+            <div class="project-info-content">
+                <div class="project-meta">
+                    <h3>Abschlussarbeit</h3>
+                    <h3>Website Projekt</h3>
+                </div>
+                <div class="project-description">
+                    <p>Im Rahmen meiner Abschlussarbeit zur Mediengestalterin Digital & Print bei der Handelskammer Hamburg habe ich einen One-Pager für einen Schul-Caterer konzipiert, gestaltet und technisch umgesetzt. 
+                        Ziel des Projekts war die Umsetzung einer funktionalen und klar strukturierten Website auf Basis vorgegebener Inhalte. Texte, Bilder sowie das Logo wurde gestellt und mussten gestalterisch sinnvoll integriert werden.
+                        Neben dem visuellen Aufbau umfasst die Aufgabe die Programmierung eines Login-Bereichs sowie die Einbindung einen interaktiven Quiz-Elements. Dabei lag der Fokus auf Benutzerführung, Übersichtlichkeit und einer sauberen technischen Umsetzung
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-video">
+            <figure class="video-container">
+                <video controls muted aria-label="Screenrecording der Nasch Website" title="Video-Demonstration der Nasch Website mit Login-System">
+                    <source src="assets/videos/nasch_website.mp4" type="video/mp4">
+                    Ihr Browser unterstützt das Video-Tag nicht.
+                </video>
+            </figure>
+        </section>
+
+        <section class="project-gallery">
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <picture>
+                <source srcset="assets/images_webp/mockup_nasch_macbook.webp" type="image/webp">
+                <img src="assets/images_webp/mockup_nasch_macbook.webp" alt="Nasch Website Mockup - Öffentlicher Bereich" loading="lazy">
+            </picture>
+                    <p class="image-caption">Öffentlicher Bereich</p>
+                </div>
+                <div class="gallery-item">
+                    <picture>
+                <source srcset="assets/images_webp/mockup_nasch_macbook1.webp" type="image/webp">
+                <img src="assets/images_webp/mockup_nasch_macbook1.webp" alt="Nasch Website Mockup - Eingeloggter Bereich" loading="lazy">
+            </picture>
+                    <p class="image-caption">Eingeloggter Bereich</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-navigation">
+            <div class="project-nav-content">
+                <a href="project.html" class="nav-arrow nav-prev" aria-label="Vorheriges Projekt">←</a>
+                <a href="index.html#portfolio" class="nav-all-projects">Alle Projekte ansehen</a>
+                <a href="project4.html" class="nav-arrow nav-next" aria-label="Nächstes Projekt">→</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <div class="social-links">
+                    <a href="https://www.instagram.com/so_ho_illustration/?hl=de" target="_blank">Instagram</a>
+                    <a href="https://www.behance.net/sonjahrst" target="_blank">Behance</a>
+                    <a href="https://www.linkedin.com/in/sonja-h%C3%B6rst-74408121b" target="_blank">Linkedin</a>
+                </div>
+                
+                <div class="legal-links">
+                    <a href="cookies.html">Cookies</a>
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                </div>
+            </div>
+            
+            <div class="footer-contact">
+                <p><a href="#" class="email-placeholder" id="emailLink">hello@soho-design.net</a></p>
+                <p>Diese Website wurde bewusst ressourcenschonend und barrierearm umgesetzt.</p>
+                <p class="copyright">© 2026 Sonja Hörst.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Email Popup Modal -->
+    <div class="email-popup" id="emailPopup" role="dialog" aria-modal="true" aria-labelledby="emailPopupTitle">
+        <div class="email-popup-content">
+            <button class="email-popup-close" aria-label="Schließen">&times;</button>
+            <h3 id="emailPopupTitle">E-Mail-Adresse wird in Kürze hinzugefügt</h3>
+            <p>Kontaktaufnahme gerne über LinkedIn oder Instagram!</p>
+            <div class="email-popup-links">
+                <a href="https://www.linkedin.com/in/sonja-h%C3%B6rst-74408121b" target="_blank" rel="noopener noreferrer">
+                    <strong>LinkedIn</strong>
+                </a>
+                <a href="https://www.instagram.com/so_ho_illustration/?hl=de" target="_blank" rel="noopener noreferrer">
+                    <strong>Instagram</strong>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="de" class="portrait-page">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portrait - Sonja Hörst</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon_sonja.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon_sonja.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon_sonja.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Boldonse:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --font-heading: 'Boldonse', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-accent: 'Space Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.8;
+            color: #2c2c2c;
+            background: #fafafa;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #ffd700;
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: #000000;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-heading);
+            text-decoration: none;
+            color: #2c2c2c;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 10px 20px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: #000000;
+        }
+
+        .page-header {
+            margin-top: 80px;
+            padding: 5rem 3rem 3rem;
+            text-align: center;
+            background: #f5f5f5;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 200;
+            letter-spacing: 4px;
+            color: #000000;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+
+        .page-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, #ffd700, #ffed4a);
+        }
+
+        .page-header p {
+            max-width: 800px;
+            margin: 2rem auto 0;
+            font-size: 1.1rem;
+            line-height: 2;
+            color: #555;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem;
+            background: white;
+        }
+
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 1rem;
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+            background: white;
+            border-radius: 0;
+        }
+
+        .masonry-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Verschiedene Bildgrößen - natürliche Proportionen */
+        .masonry-item:nth-child(1) {
+            transform: scale(0.8);
+        }
+
+        .masonry-item:nth-child(2) {
+            transform: scale(1.2);
+        }
+
+        .masonry-item:nth-child(3) {
+            transform: scale(0.9);
+        }
+
+        .masonry-item:nth-child(4) {
+            transform: scale(1.1);
+        }
+
+        .masonry-item:nth-child(5) {
+            transform: scale(0.85);
+        }
+
+        .masonry-item:nth-child(6) {
+            transform: scale(1.15);
+        }
+
+        .masonry-item:nth-child(7) {
+            transform: scale(0.95);
+        }
+
+        .masonry-item:nth-child(8) {
+            transform: scale(1.05);
+        }
+
+        .masonry-item:nth-child(9) {
+            transform: scale(0.75);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            position: relative;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            max-height: 85vh;
+            object-fit: contain;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            font-weight: 300;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #d4a574;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 1024px) {
+            .masonry-grid {
+                column-count: 2;
+                column-gap: 0.8rem;
+            }
+
+            .masonry-item {
+                margin-bottom: 0.8rem;
+            }
+
+            /* Angepasste Größen für Tablet */
+            .masonry-item:nth-child(odd) {
+                transform: scale(0.9);
+            }
+
+            .masonry-item:nth-child(even) {
+                transform: scale(1.1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-content {
+                padding: 1rem 2rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .page-header {
+                padding: 3rem 2rem 2rem;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+                letter-spacing: 3px;
+            }
+
+            .container {
+                padding: 2rem 1.5rem;
+            }
+
+            .masonry-grid {
+                column-count: 1;
+                column-gap: 0.5rem;
+            }
+
+            .masonry-item {
+                margin-bottom: 0.5rem;
+            }
+
+            /* Einheitliche Größen für Mobile */
+            .masonry-item {
+                transform: scale(1) !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="nav-content">
+            <a href="sonja_portfolio.html" class="logo">Sonja Hörst</a>
+            <ul class="nav-links">
+                <li><a href="sonja_portfolio.html#about">Über mich</a></li>
+                <li><a href="sonja_portfolio.html#portfolio">Portfolio</a></li>
+                <li><a href="portrait.html">Portraits</a></li>
+                <li><a href="sonja_portfolio.html#contact">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>PORTRAITS</h1>
+        <p>
+            Portrait-Illustrationen verbinden Wiedererkennung mit Storytelling und schaffen eine 
+            unverwechselbare visuelle Identität. Ob für Editorials, Magazine oder persönliche Projekte – 
+            illustrierte Portraits transportieren Persönlichkeit, Emotionen und Geschichten auf künstlerische Weise.
+        </p>
+    </div>
+
+    <div class="container">
+        <div class="masonry-grid">
+            <div class="masonry-item">
+                <img src="assets/images/fotografie_illustartion.jpeg" alt="Portrait 1" loading="lazy">
+            </div>
+
+            <div class="masonry-item">
+                <img src="assets/images_webp/enten_amngeln_illustration.webp" alt="Portrait 2" loading="lazy">
+            </div>
+
+            <div class="masonry-item">
+                <picture>
+                <source srcset="assets/images_webp/fashionsketch_illustartion.webp" type="image/webp">
+                <img src="assets/images/fashionsketch_illustartion.jpeg" alt="Portrait 3" loading="lazy">
+            </picture>
+            </div>
+
+            <div class="masonry-item">
+                <img src="assets/images/hoeren_model.jpeg" alt="Portrait 4" loading="lazy">
+            </div>
+
+            <div class="masonry-item">
+                <picture>
+                <source srcset="assets/images_webp/portarit_illustration.webp" type="image/webp">
+                <img src="assets/images_webp/portarit_illustration.webp" alt="Portrait 5" loading="lazy">
+            </picture>
+            </div>
+
+            <div class="masonry-item">
+                <img src="assets/images/kind_rollstuhl_portratit.jpeg" alt="Portrait 6" loading="lazy">
+            </div>
+
+            <div class="masonry-item">
+                <picture>
+                <source srcset="assets/images_webp/sonja_portrait_illustration.webp" type="image/webp">
+                <img src="assets/images/sonja_portrait_illustration.jpeg" alt="Portrait 7" loading="lazy">
+            </picture>
+            </div>
+
+            <div class="masonry-item">
+                <img src="assets/images/model_nah_portarit.jpeg" alt="Portrait 8" loading="lazy">
+            </div>
+
+            <div class="masonry-item">
+                <img src="assets/images/fashion_illustartion_sonja.jpeg" alt="Portrait 9" loading="lazy">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Sonja Hörst. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img id="modal-img" src="" alt="Vergrößerte Ansicht" loading="lazy">
+        </div>
+    </div>
+
+    <script>
+        const masonryItems = document.querySelectorAll('.masonry-item');
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modal-img');
+        const closeModal = document.querySelector('.close-modal');
+
+        masonryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                
+                modal.style.display = 'flex';
+                modalImg.src = img.src;
+            });
+        });
+
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

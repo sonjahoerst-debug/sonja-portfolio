@@ -1,0 +1,9 @@
+# robots.txt für soho-design.net Portfolio
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://www.soho-design.net/sitemap.xml
+
+# Disallow admin or sensitive files (if any)
+Disallow: /assets/documents/
