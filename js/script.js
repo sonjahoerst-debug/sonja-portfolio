@@ -40,6 +40,22 @@ const observer = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
+            
+            // Overlay-Animation nur auf Mobile (max-width 768px)
+            if (window.innerWidth <= 768) {
+                // Entferne alte Animation falls vorhanden
+                entry.target.classList.remove('animate-overlay');
+                
+                // Trigger Animation nach kleiner Verzögerung
+                setTimeout(() => {
+                    entry.target.classList.add('animate-overlay');
+                }, 300);
+                
+                // Entferne Klasse nach Animation (3 Sekunden)
+                setTimeout(() => {
+                    entry.target.classList.remove('animate-overlay');
+                }, 3300);
+            }
         }
     });
 }, observerOptions);

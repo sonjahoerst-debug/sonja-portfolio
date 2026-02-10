@@ -216,7 +216,7 @@ header {
         font-weight: 300;
     }
     100% {
-        font-weight: 400;
+        font-weight: 700;
     }
 }
 
@@ -1936,7 +1936,7 @@ footer {
 .gallery-grid-three {
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-    align-items: start;
+    align-items: stretch;
 }
 
 .gallery-item {
@@ -1951,9 +1951,9 @@ footer {
 }
 
 .gallery-grid-three .gallery-item {
-    aspect-ratio: 3/4;
+    aspect-ratio: auto;
     padding: 1rem;
-    height: 600px;
+    height: 850px;
 }
 
 .gallery-item img {
@@ -1988,18 +1988,18 @@ footer {
 }
 
 .astern-packaging-grid .gallery-item {
-    width: 450px !important;
-    height: 600px !important;
+    width: 550px !important;
+    height: 733px !important;
     aspect-ratio: unset !important;
 }
 
 .astern-packaging-grid .gallery-item.gallery-item-contain {
-    height: 600px !important;
-    width: 450px !important;
-    max-width: 450px !important;
-    max-height: 600px !important;
-    min-width: 450px !important;
-    min-height: 600px !important;
+    height: 733px !important;
+    width: 550px !important;
+    max-width: 550px !important;
+    max-height: 733px !important;
+    min-width: 550px !important;
+    min-height: 733px !important;
     aspect-ratio: unset !important;
     display: flex !important;
     align-items: center !important;
@@ -2291,6 +2291,11 @@ footer {
         line-height: 1.5; /* Barrierefrei: WCAG minimum */
     }
     
+    /* Hero Text auf Mobile kleiner */
+    .hero-content h1 {
+        font-size: clamp(1.5rem, 4vw, 2.5rem) !important;
+    }
+    
     /* Fließtext-Zeilenabstände in mobiler Ansicht reduzieren */
     .project-description p,
     .project-info p,
@@ -2330,9 +2335,24 @@ footer {
         font-size: 0.95rem;
     }
     
+    /* Lightbox auf Mobile - über Navigation anzeigen */
+    .lightbox {
+        z-index: 20000 !important; /* Höher als Navigation */
+        padding-top: 80px; /* Platz für fixierte Navigation */
+    }
+    
+    .lightbox-content {
+        max-height: calc(100vh - 100px) !important; /* Abzug für Navigation und Padding */
+        padding: 1rem;
+    }
+    
+    .lightbox-content img {
+        max-height: calc(100vh - 180px) !important; /* Mehr Platz für Navigation und Close-Button */
+    }
+    
     /* Lightbox Schließen-Button Mobile */
     .lightbox-close {
-        top: 1rem !important;
+        top: 90px !important; /* Unter der Navigation (80px + 10px Abstand) */
         right: 1rem !important;
         font-size: 1.6rem !important; /* smaller visible icon */
         min-width: 44px !important; /* accessible hit target */
@@ -2347,6 +2367,7 @@ footer {
         line-height: 1 !important;
         box-shadow: none !important;
         opacity: 0.9 !important;
+        z-index: 20001 !important; /* Über dem Lightbox-Bild */
     }
 
     .lightbox-close:hover {
@@ -2422,6 +2443,30 @@ footer {
         display: inline;
     }
     
+    /* Portfolio Overlay Auto-Animation auf Mobile */
+    .portfolio-overlay {
+        animation: none; /* Standard: keine Animation */
+    }
+    
+    .portfolio-item.animate-overlay .portfolio-overlay {
+        animation: showOverlayMobile 3s ease-in-out forwards;
+    }
+    
+    @keyframes showOverlayMobile {
+        0% {
+            opacity: 0;
+        }
+        20% {
+            opacity: 1;
+        }
+        80% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+    
     /* Alle Bilder in mobiler Ansicht größer */
     /* Swissed (1. Kind) - nicht zu stark zoomen, sonst Anschnitt */
     .portfolio-item:nth-child(1) img {
@@ -2430,7 +2475,7 @@ footer {
     
     /* Plakat (5. Kind) - portfolio-item-zoom */
     .portfolio-item:nth-child(5) img {
-        transform: scale(1.6) !important;
+        transform: scale(2.2) !important;
     }
     
     /* Standardgröße für kleinere Items */
@@ -2512,7 +2557,7 @@ footer {
     
     /* Die letzten beiden Bilder reinzoomen */
     .project-1 .gallery-item.gallery-image-larger img {
-        transform: scale(1.6) !important;
+        transform: scale(2.0) !important;
         object-fit: cover !important;
         object-position: 60% center !important;
     }
@@ -2544,6 +2589,31 @@ footer {
     /* Project 3 (Web App) Hero Image - oberen Teil mehr zeigen */
     html.project-3 .project-hero-image {
         object-position: center 40% !important;
+    }
+    
+    html.project-3 .project-hero {
+        padding-top: 2rem !important;
+    }
+    
+    /* Project 5 (Nasch) - Bilder vergrößern und Caption direkt darunter auf Mobile */
+    .project-5 .gallery-item picture {
+        padding: 0 !important;
+        width: 100% !important;
+        aspect-ratio: auto !important;
+        margin-bottom: 0 !important;
+    }
+    
+    .project-5 .gallery-item picture img {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+        transform: scale(1.05);
+    }
+    
+    .project-5 .image-caption {
+        margin-top: 0.3rem !important;
+        padding: 0 !important;
+        font-size: 0.9rem !important;
     }
     
     .astern-packaging-grid .gallery-item {
@@ -2675,12 +2745,21 @@ footer {
     html.project-3 .gallery-grid-three .gallery-item,
     html.project-page.project-3 .gallery-item {
         padding: 0 !important;
-        margin: 0 0 0.2rem 0 !important;
+        margin: 0 !important;
         height: auto !important;
-        aspect-ratio: 3/4 !important;
+        aspect-ratio: auto !important;
         background-color: transparent !important;
         border: none !important;
         box-shadow: none !important;
+        overflow: hidden !important;
+    }
+    
+    html.project-3 .gallery-item img {
+        padding: 0 !important;
+        margin: 0 !important;
+        display: block !important;
+        border: none !important;
+        transform: scale(1.2) !important;
     }
     
     html.project-3 .gallery-grid-three .gallery-item:last-child {
@@ -3033,6 +3112,50 @@ footer {
             opacity: 0;
             top: calc(22vh - 20px);
         }
+    }
+}
+
+/* Legal Pages (Impressum, Datenschutz, Cookies) - Mobile Optimierung */
+@media (max-width: 768px) {
+    .legal-content {
+        padding: 1rem;
+        max-width: 100%;
+    }
+    
+    .legal-content h1 {
+        font-size: 1.8rem !important;
+        margin-bottom: 1.5rem;
+    }
+    
+    .legal-content h2 {
+        font-size: 1.3rem !important;
+        margin-top: 2rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .legal-content h3 {
+        font-size: 1.1rem !important;
+        margin-top: 1.2rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .legal-content h4 {
+        font-size: 1rem !important;
+    }
+    
+    .legal-content p {
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+    }
+    
+    .legal-content ul {
+        margin-left: 1.5rem;
+        font-size: 0.95rem;
+    }
+    
+    .legal-content a {
+        word-break: break-word;
     }
 }
 

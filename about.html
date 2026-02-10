@@ -14,6 +14,27 @@
     <!-- Preload kritischer Ressourcen für schnellere Ladezeit -->
     <link rel="preload" href="css/styles.css" as="style">
     <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Structured Data / Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "mainEntity": {
+            "@type": "Person",
+            "name": "Sonja Hörst",
+            "jobTitle": "Mediengestalterin Digital & Print",
+            "description": "Illustratorin und Mediengestalterin aus Hamburg",
+            "url": "https://www.soho-design.net",
+            "email": "hello@soho-design.net",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Hamburg",
+                "addressCountry": "DE"
+            }
+        }
+    }
+    </script>
 </head>
 <body>
     <!-- Skip to main content link for screen readers -->
@@ -47,9 +68,9 @@
             <div class="about-hero-content">
                 <!-- Profilbild separat vom Fisch -->
                 <div class="speech-bubble">
-                    <img src="assets/images_webp/sonja_start.webp" alt="Sonja Hörst">
+                    <img src="assets/images_webp/sonja_start.webp" alt="Sonja Hörst - Mediengestalterin und Grafikdesignerin aus Hamburg">
                 </div>
-                <h1>Ich bin Sonja.</h1>
+                <h1>Ich bin Sonja Hörst.</h1>
             </div>
         </section>
 
