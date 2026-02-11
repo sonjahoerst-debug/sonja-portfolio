@@ -182,6 +182,7 @@ header {
     display: inline-block;
     font-weight: 300;
     animation: wordToRegular 0.5s ease-in-out forwards;
+    min-width: max-content; /* Verhindert Umbruch während Animation */
 }
 
 /* Zeile 1: Moin! Ich bin Sonja Hörst. */
@@ -227,6 +228,7 @@ header {
     padding: 0;
     background-color: var(--white);
     padding-bottom: 0;
+    margin-bottom: 2rem;
 }
 
 .portfolio-grid {
@@ -272,19 +274,26 @@ header {
 
 .portfolio-item:nth-child(5) img {
     object-fit: contain;
-    padding: 3rem;
+    padding: 4rem;
     background-color: var(--white);
 }
 
 .portfolio-item:nth-child(6) img {
     object-fit: contain;
-    padding: 1.5rem;
+    padding: 0.5rem;
     background-color: var(--white);
 }
 
 .portfolio-item:nth-child(7) img {
-    object-fit: cover;
-    object-position: center 10%;
+    object-fit: contain;
+    object-position: center;
+    transform: scale(0.85);
+}
+
+.portfolio-item:nth-child(8) img {
+    object-fit: contain;
+    object-position: center;
+    transform: scale(0.8);
 }
 
 /* Spezielle Bildgrößen für einzelne Kacheln */
@@ -324,7 +333,7 @@ header {
 /* Footer */
 footer {
     background-color: var(--white);
-    padding: 4rem 2rem 2rem;
+    padding: 0 2rem 2rem;
     margin-top: 0;
 }
 
@@ -373,6 +382,17 @@ footer {
     color: var(--primary-color);
     font-size: clamp(1.5rem, 4vw, 2.5rem);
     font-weight: 400;
+}
+
+.footer-cta h2 a.contact-cta-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.footer-cta h2 a.contact-cta-link:hover {
+    opacity: 0.7;
 }
 
 .footer-links {
@@ -648,7 +668,7 @@ footer {
 
 .qa-section {
     max-width: 900px;
-    margin: 0 auto 4rem;
+    margin: 0 auto 0;
 }
 
 .qa-item {
@@ -676,9 +696,26 @@ footer {
     margin: 0;
 }
 
+.about-image-container {
+    margin-top: -2rem;
+    margin-bottom: -2rem;
+    padding: 0;
+    text-align: center;
+    max-width: none !important;
+    width: 100% !important;
+}
+
+.about-image-container img {
+    max-width: 1400px !important;
+    width: 100% !important;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
 .contact-section {
-    margin-top: 5rem;
-    padding-top: 3rem;
+    margin-top: 0;
+    padding-top: 0;
     border-top: 2px solid var(--primary-color);
 }
 
@@ -1543,6 +1580,32 @@ footer {
     display: block;
 }
 
+/* Project 3 Gallery - kleinere Abstände */
+.project-3 .project-gallery {
+    padding: 0 !important;
+}
+
+.project-3 .gallery-grid {
+    gap: 0;
+    grid-template-columns: repeat(3, 1fr) !important;
+    align-items: stretch;
+    min-height: 600px;
+}
+
+.project-3 .gallery-item {
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.project-3 .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .project-3 .project-hero {
     background-color: var(--white);
     display: flex;
@@ -1881,6 +1944,12 @@ footer {
     transform: scale(1.05);
     transform-origin: center center;
     color: var(--text-color);
+    background-color: transparent;
+}
+
+/* Entferne schwarzes Overlay bei Videos */
+.video-container video::-webkit-media-controls-overlay-enclosure {
+    display: none !important;
 }
 
 .video-container figcaption {
@@ -2018,6 +2087,63 @@ footer {
     height: 100%;
     max-height: 100%;
     max-width: 100%;
+}
+
+/* Le Croissant Branding - Bilder anpassen */
+.project-2 .gallery-grid .gallery-item:nth-child(1) img {
+    transform: scale(1.3);
+    object-fit: contain;
+}
+
+.project-2 .gallery-grid .gallery-item:nth-child(2) img {
+    transform: scale(1.4);
+    object-fit: contain;
+}
+
+.project-2 .gallery-grid .gallery-item:nth-child(3) img {
+    transform: scale(1.2);
+    object-fit: contain;
+}
+
+.project-2 .gallery-grid .gallery-item:nth-child(4) img {
+    transform: scale(1.15);
+    object-fit: contain;
+}
+
+.project-2 .gallery-grid .gallery-item:nth-child(5) img {
+    transform: scale(1.15);
+    object-fit: contain;
+}
+
+/* Le Croissant - Letztes Bild mittig */
+.project-2 .gallery-grid .gallery-item:nth-child(5) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    max-width: 50%;
+}
+
+/* Le Croissant - Hero Image nicht abschneiden */
+.project-2 .project-hero-image {
+    object-fit: contain !important;
+    max-height: 80vh;
+}
+
+/* Project 9 (Flyer) - Hero Video */
+.project-9 .project-hero {
+    height: 60vh;
+}
+
+.project-9 .project-hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* Project 9 (Flyer) - Gallery Bilder vergrößern */
+.project-9 .gallery-grid .gallery-item img {
+    transform: scale(1.2);
 }
 
 .astern-packaging-grid .gallery-item-contain picture {
@@ -2296,6 +2422,11 @@ footer {
         font-size: clamp(1.5rem, 4vw, 2.5rem) !important;
     }
     
+    /* Portfolio Grid auf Mobile: Abstand nach letzter Kachel */
+    .portfolio-preview {
+        margin-bottom: 2rem !important;
+    }
+    
     /* Fließtext-Zeilenabstände in mobiler Ansicht reduzieren */
     .project-description p,
     .project-info p,
@@ -2350,28 +2481,36 @@ footer {
         max-height: calc(100vh - 180px) !important; /* Mehr Platz für Navigation und Close-Button */
     }
     
-    /* Lightbox Schließen-Button Mobile */
+    /* Beschreibung in Mobile ausblenden */
+    .lightbox-description {
+        display: none !important;
+    }
+    
+    /* Lightbox Schließen-Button Mobile - rechts über dem Bild */
     .lightbox-close {
-        top: 90px !important; /* Unter der Navigation (80px + 10px Abstand) */
-        right: 1rem !important;
-        font-size: 1.6rem !important; /* smaller visible icon */
-        min-width: 44px !important; /* accessible hit target */
-        min-height: 44px !important;
-        padding: 0.15rem 0.25rem !important; /* small visual padding */
+        position: fixed !important;
+        top: 100px !important; /* Unter der Navigation */
+        right: 1.5rem !important;
+        font-size: 2rem !important;
+        min-width: 50px !important;
+        min-height: 50px !important;
+        padding: 0 !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        background-color: rgba(0, 0, 0, 0.35) !important; /* subtle */
-        border-radius: 2px !important; /* small rounding */
-        color: #fff !important;
+        background-color: rgba(255, 255, 255, 0.95) !important; /* Weißer Hintergrund für Sichtbarkeit */
+        border-radius: 4px !important; /* Viereckig mit leicht abgerundeten Ecken */
+        color: #000 !important; /* Schwarzes X */
         line-height: 1 !important;
-        box-shadow: none !important;
-        opacity: 0.9 !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important; /* Schatten für Sichtbarkeit */
+        opacity: 1 !important;
         z-index: 20001 !important; /* Über dem Lightbox-Bild */
+        font-weight: 300 !important;
     }
 
     .lightbox-close:hover {
-        opacity: 1 !important;
+        background-color: rgba(255, 255, 255, 1) !important;
+        transform: scale(1.05) !important;
     }
     
     .navbar {
@@ -2405,32 +2544,53 @@ footer {
     
     /* Q&A kompakter in mobiler Ansicht */
     .qa-item {
-        margin-bottom: 2rem !important;
-        padding-bottom: 2rem !important;
+        margin-bottom: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+    
+    .qa-item:last-child {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
     }
     
     .qa-item .question {
-        margin-bottom: 0.8rem !important;
+        margin-bottom: 0.5rem !important;
         font-size: 1.1rem !important;
+        line-height: 1.5 !important;
     }
     
     .qa-item .answer {
         font-size: 1rem !important;
-        line-height: 1.7 !important;
+        line-height: 1.6 !important;
     }
-    
+
+    .about-image-container {
+        margin: -2rem 0 -2rem 0 !important;
+        padding: 0 !important;
+        max-width: none !important;
+        width: 100vw !important;
+        margin-left: calc(-50vw + 50%) !important;
+    }
+
+    .about-image-container img {
+        max-width: 100% !important;
+        width: 100% !important;
+        transform: scale(1.4) !important;
+    }
+
     /* Footer auf Mobile sichtbar machen */
     .about-page footer {
         position: relative !important;
         z-index: 10001 !important;
         display: block !important;
         background-color: var(--white) !important;
-        margin-top: 2rem !important;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
     }
     
     /* Hero-Text: Umbruch nach "Moin!" nur in mobiler Ansicht */
     .mobile-break {
-        display: block;
+        display: none; /* Kein Umbruch mehr nach Moin */
     }
     
     /* Hero-Text: Nachname "Hörst" in mobiler Ansicht ausblenden */
@@ -2475,7 +2635,7 @@ footer {
     
     /* Plakat (5. Kind) - portfolio-item-zoom */
     .portfolio-item:nth-child(5) img {
-        transform: scale(2.2) !important;
+        transform: scale(1.8) !important;
     }
     
     /* Standardgröße für kleinere Items */
@@ -2501,7 +2661,7 @@ footer {
     
     /* Paula's Web App (6. Kind) */
     .portfolio-item:nth-child(6) img {
-        transform: scale(1.2) !important;
+        transform: scale(1.5) !important;
     }
     
     .footer-links {
@@ -2731,6 +2891,31 @@ footer {
     html.project-3 .project-gallery {
         padding: 0 !important;
         margin: 0 !important;
+    }
+    
+    /* Project 2 (Le Croissant) Mobile: Bilder größer zoomen */
+    .project-2 .gallery-grid .gallery-item:nth-child(1) img {
+        transform: scale(1.6) !important;
+    }
+    
+    .project-2 .gallery-grid .gallery-item:nth-child(2) img {
+        transform: scale(1.65) !important;
+    }
+    
+    .project-2 .gallery-grid .gallery-item:nth-child(3) img {
+        transform: scale(1.5) !important;
+    }
+    
+    .project-2 .gallery-grid .gallery-item:nth-child(4) img {
+        transform: scale(1.4) !important;
+    }
+    
+    .project-2 .gallery-grid .gallery-item:nth-child(5) img {
+        transform: scale(1.1) !important;
+    }
+    
+    .project-2 .gallery-grid .gallery-item:nth-child(5) {
+        max-width: 100% !important;
     }
     
     html.project-3 .gallery-grid,

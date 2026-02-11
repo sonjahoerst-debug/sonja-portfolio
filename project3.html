@@ -13,6 +13,33 @@
     <link rel="preload" href="css/styles.css" as="style">
     <link rel="stylesheet" href="css/styles.css">
     <style>
+        /* Desktop: Kompakte Gallery ohne Abstände */
+        .project-gallery {
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        
+        .gallery-grid {
+            gap: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        
+        .gallery-item {
+            padding: 0 !important;
+            margin: 0 !important;
+            background: none !important;
+            border: none !important;
+        }
+        
+        .gallery-item img {
+            padding: 0 !important;
+            margin: 0 !important;
+            display: block !important;
+            width: 100% !important;
+            height: auto !important;
+        }
+        
         /* Mobile: Ultra-kompakte Gallery für diese Seite */
         @media (max-width: 1024px) {
             .project-gallery {
@@ -100,19 +127,27 @@
         </section>
 
         <section class="project-gallery">
-            <div class="gallery-grid gallery-grid-three">
+            <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="assets/images_webp/webapp_quiz.webp" alt="Paula's Garden Quiz" loading="lazy">
+                    <picture>
+                        <source srcset="assets/images_webp/webapp_quiz.webp" type="image/webp">
+                        <img src="assets/images_webp/webapp_quiz.webp" alt="Paula's Garden Quiz von Sonja Hörst" loading="lazy">
+                    </picture>
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/images_webp/webapp_paulas_garden.webp" alt="Paula's Garden Web App Hauptseite" loading="lazy">
+                    <picture>
+                        <source srcset="assets/images_webp/webapp_paulas_garden.webp" type="image/webp">
+                        <img src="assets/images_webp/webapp_paulas_garden.webp" alt="Paula's Garden Web App Hauptseite von Sonja Hörst" loading="lazy">
+                    </picture>
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/images_webp/mockup_webapp_paula.webp" alt="Paula's Garden Web App Mockup" loading="lazy">
+                    <picture>
+                        <source srcset="assets/images_webp/mockup_webapp_paula.webp" type="image/webp">
+                        <img src="assets/images_webp/mockup_webapp_paula.webp" alt="Paula's Garden Web App Mockup von Sonja Hörst" loading="lazy">
+                    </picture>
                 </div>
             </div>
         </section>
-
 
         <section class="project-navigation">
             <div class="project-nav-content">

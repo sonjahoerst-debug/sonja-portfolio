@@ -199,7 +199,10 @@ if (lightbox) {
         if (img) {
             lightboxImg.src = img.src;
             lightboxImg.alt = img.alt;
-            lightboxDesc.textContent = img.getAttribute('data-description') || '';
+            // Nur Text vor dem Gedankenstrich anzeigen
+            const fullDesc = img.getAttribute('data-description') || '';
+            const shortDesc = fullDesc.split(' - ')[0];
+            lightboxDesc.textContent = shortDesc;
             lightbox.classList.add('active');
             lightbox.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
@@ -253,8 +256,6 @@ if (lightbox) {
 }
 
 // Email Popup
-const emailLink = document.getElementById('emailLink');
-const emailLinkAbout = document.querySelector('.email-link-about');
 const emailPopup = document.getElementById('emailPopup');
 const emailPopupClose = document.querySelector('.email-popup-close');
 
@@ -272,15 +273,13 @@ if (emailPopup) {
         }, 100);
     }
 
-    // Email-Link im Footer
-    if (emailLink) {
-        emailLink.addEventListener('click', openEmailPopup);
-    }
-
-    // Email-Link im About-Kontakt-Abschnitt
-    if (emailLinkAbout) {
-        emailLinkAbout.addEventListener('click', openEmailPopup);
-    }
+    // Event Delegation für alle email-placeholder Links
+    document.addEventListener('click', function(e) {
+        const emailPlaceholder = e.target.closest('.email-placeholder');
+        if (emailPlaceholder) {
+            openEmailPopup(e);
+        }
+    });
 
     // Close-Button Handler
     emailPopupClose?.addEventListener('click', function() {
