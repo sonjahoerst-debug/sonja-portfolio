@@ -2,8 +2,17 @@
 User-agent: *
 Allow: /
 
+# Rechtliche Seiten nicht in Suchergebnissen
+Disallow: /cookies.html
+Disallow: /impressum.html
+Disallow: /datenschutz.html
+
+# Alte/Test-Seiten ausschließen
+Disallow: /sonja_portfolio.html
+Disallow: /404.html
+
+# Sensitive Dateien schützen
+Disallow: /assets/documents/
+
 # Sitemap Location
 Sitemap: https://www.soho-design.net/sitemap.xml
-
-# Disallow admin or sensitive files (if any)
-Disallow: /assets/documents/

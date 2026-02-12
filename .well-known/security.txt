@@ -1,0 +1,10 @@
+# Security Contact Information
+# https://securitytxt.org/
+
+Contact: mailto:hello@soho-design.net
+Expires: 2027-02-12T12:00:00.000Z
+Preferred-Languages: de, en
+Canonical: https://www.soho-design.net/.well-known/security.txt
+
+# This is a design portfolio website
+# No critical infrastructure or user data processing

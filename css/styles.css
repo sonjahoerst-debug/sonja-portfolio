@@ -274,8 +274,11 @@ header {
 
 .portfolio-item:nth-child(5) img {
     object-fit: contain;
-    padding: 4rem;
+    padding: 2rem;
     background-color: var(--white);
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform-origin: center center;
 }
 
 .portfolio-item:nth-child(6) img {
@@ -288,12 +291,16 @@ header {
     object-fit: contain;
     object-position: center;
     transform: scale(0.85);
+    -webkit-transform: scale(0.85);
+    transform-origin: center center;
 }
 
 .portfolio-item:nth-child(8) img {
     object-fit: contain;
     object-position: center;
     transform: scale(0.8);
+    -webkit-transform: scale(0.8);
+    transform-origin: center center;
 }
 
 /* Spezielle Bildgrößen für einzelne Kacheln */
@@ -1557,6 +1564,7 @@ footer {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    -o-object-fit: cover;
 }
 
 /* Project 4 specific styles */
@@ -2092,27 +2100,42 @@ footer {
 /* Le Croissant Branding - Bilder anpassen */
 .project-2 .gallery-grid .gallery-item:nth-child(1) img {
     transform: scale(1.3);
+    -webkit-transform: scale(1.3);
+    -moz-transform: scale(1.3);
     object-fit: contain;
+    transform-origin: center center;
 }
 
 .project-2 .gallery-grid .gallery-item:nth-child(2) img {
     transform: scale(1.4);
+    -webkit-transform: scale(1.4);
+    -moz-transform: scale(1.4);
     object-fit: contain;
+    transform-origin: center center;
 }
 
 .project-2 .gallery-grid .gallery-item:nth-child(3) img {
     transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
     object-fit: contain;
+    transform-origin: center center;
 }
 
 .project-2 .gallery-grid .gallery-item:nth-child(4) img {
     transform: scale(1.15);
+    -webkit-transform: scale(1.15);
+    -moz-transform: scale(1.15);
     object-fit: contain;
+    transform-origin: center center;
 }
 
 .project-2 .gallery-grid .gallery-item:nth-child(5) img {
     transform: scale(1.15);
+    -webkit-transform: scale(1.15);
+    -moz-transform: scale(1.15);
     object-fit: contain;
+    transform-origin: center center;
 }
 
 /* Le Croissant - Letztes Bild mittig */
@@ -2125,25 +2148,36 @@ footer {
 /* Le Croissant - Hero Image nicht abschneiden */
 .project-2 .project-hero-image {
     object-fit: contain !important;
+    -o-object-fit: contain !important;
     max-height: 80vh;
+    width: 100%;
+    height: auto;
 }
 
 /* Project 9 (Flyer) - Hero Video */
 .project-9 .project-hero {
     height: 60vh;
+    overflow: hidden;
+    position: relative;
 }
 
 .project-9 .project-hero-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    -o-object-fit: cover;
     object-position: center;
     display: block;
+    background-color: transparent;
 }
 
 /* Project 9 (Flyer) - Gallery Bilder vergrößern */
 .project-9 .gallery-grid .gallery-item img {
     transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    transform-origin: center center;
+    box-shadow: none;
 }
 
 .astern-packaging-grid .gallery-item-contain picture {
@@ -2631,37 +2665,64 @@ footer {
     /* Swissed (1. Kind) - nicht zu stark zoomen, sonst Anschnitt */
     .portfolio-item:nth-child(1) img {
         transform: scale(1.4) !important;
+        -webkit-transform: scale(1.4) !important;
     }
     
-    /* Plakat (5. Kind) - portfolio-item-zoom */
+    /* Web App (5. Kind) - moderat zoomen */
     .portfolio-item:nth-child(5) img {
-        transform: scale(1.8) !important;
+        transform: scale(1.3) !important;
+        -webkit-transform: scale(1.3) !important;
     }
     
     /* Standardgröße für kleinere Items */
     .portfolio-item-smaller img {
         transform: scale(1.15) !important;
+        -webkit-transform: scale(1.15) !important;
     }
     
     /* Spezifische Anpassungen */
     /* Packaging Astern (2. Kind) */
     .portfolio-item:nth-child(2) img {
         transform: scale(1.2) !important;
+        -webkit-transform: scale(1.2) !important;
     }
     
     /* Nasch Webdesign (3. Kind) */
     .portfolio-item:nth-child(3) img {
         transform: scale(1.2) !important;
+        -webkit-transform: scale(1.2) !important;
     }
     
     /* Sonnenmilch Packaging (4. Kind) */
     .portfolio-item:nth-child(4) img {
         transform: scale(1.2) !important;
+        -webkit-transform: scale(1.2) !important;
     }
     
-    /* Paula's Web App (6. Kind) */
+    /* Plakat (6. Kind) */
     .portfolio-item:nth-child(6) img {
         transform: scale(1.5) !important;
+        -webkit-transform: scale(1.5) !important;
+    }
+    
+    /* Branding Le Croissant (7. Kind) - Safari/Chrome einheitlich */
+    .portfolio-item:nth-child(7) img {
+        transform: scale(1.0) !important;
+        -webkit-transform: scale(1.0) !important;
+        object-fit: contain !important;
+        object-position: center !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+    
+    /* Flyer Weingut (8. Kind) - Safari/Chrome einheitlich */
+    .portfolio-item:nth-child(8) img {
+        transform: scale(1.0) !important;
+        -webkit-transform: scale(1.0) !important;
+        object-fit: contain !important;
+        object-position: center !important;
+        width: 100% !important;
+        height: 100% !important;
     }
     
     .footer-links {
@@ -2822,10 +2883,25 @@ footer {
         height: auto !important;
         max-height: none !important;
         object-fit: contain !important;
+        -o-object-fit: contain !important;
         object-position: center !important;
         margin: 0 !important;
         padding: 0 !important;
         display: block !important;
+    }
+    
+    /* Project 9 (Flyer) - Mobile Video Hero */
+    .project-9 .project-hero {
+        height: 50vh !important;
+        overflow: hidden !important;
+    }
+    
+    .project-9 .project-hero-video {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        -o-object-fit: cover !important;
+        object-position: center !important;
     }
     
     /* Project Info (Beschreibung) kompakter - weniger Abstand zum Hero */
@@ -2896,22 +2972,37 @@ footer {
     /* Project 2 (Le Croissant) Mobile: Bilder größer zoomen */
     .project-2 .gallery-grid .gallery-item:nth-child(1) img {
         transform: scale(1.6) !important;
+        -webkit-transform: scale(1.6) !important;
+        -moz-transform: scale(1.6) !important;
+        transform-origin: left bottom !important;
     }
     
     .project-2 .gallery-grid .gallery-item:nth-child(2) img {
         transform: scale(1.65) !important;
+        -webkit-transform: scale(1.65) !important;
+        -moz-transform: scale(1.65) !important;
+        transform-origin: left bottom !important;
     }
     
     .project-2 .gallery-grid .gallery-item:nth-child(3) img {
         transform: scale(1.5) !important;
+        -webkit-transform: scale(1.5) !important;
+        -moz-transform: scale(1.5) !important;
+        transform-origin: left bottom !important;
     }
     
     .project-2 .gallery-grid .gallery-item:nth-child(4) img {
         transform: scale(1.4) !important;
+        -webkit-transform: scale(1.4) !important;
+        -moz-transform: scale(1.4) !important;
+        transform-origin: left bottom !important;
     }
     
     .project-2 .gallery-grid .gallery-item:nth-child(5) img {
         transform: scale(1.1) !important;
+        -webkit-transform: scale(1.1) !important;
+        -moz-transform: scale(1.1) !important;
+        transform-origin: center center !important;
     }
     
     .project-2 .gallery-grid .gallery-item:nth-child(5) {
