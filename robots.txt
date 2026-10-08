@@ -8,7 +8,6 @@ Disallow: /impressum.html
 Disallow: /datenschutz.html
 
 # Alte/Test-Seiten ausschließen
-Disallow: /sonja_portfolio.html
 Disallow: /404.html
 
 # Sensitive Dateien schützen
