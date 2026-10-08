@@ -1,7 +1,7 @@
 // Service Worker für nachhaltiges Caching
-// Reduziert Serveranfragen um bis zu 80% bei wiederholten Besuchen
+// Strategie: Netzwerk zuerst (immer aktuelle Inhalte), Cache nur als Offline-Fallback
 
-const CACHE_NAME = 'sonja-portfolio-v1';
+const CACHE_NAME = 'sonja-portfolio-v2';
 const urlsToCache = [
     '/css/styles.css',
     '/js/script.js',
@@ -9,60 +9,45 @@ const urlsToCache = [
     '/about.html'
 ];
 
-// Installation - Dateien cachen
+// Installation - Dateien cachen und sofort aktivieren
 self.addEventListener('install', event => {
+    self.skipWaiting();
     event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then(cache => {
-                console.log('✅ Cache geöffnet');
-                return cache.addAll(urlsToCache);
-            })
+        caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
     );
 });
 
-// Fetch - Aus Cache laden wenn verfügbar
+// Fetch - nur GET-Anfragen der eigenen Domain behandeln
 self.addEventListener('fetch', event => {
+    const request = event.request;
+    if (request.method !== 'GET' || new URL(request.url).origin !== self.location.origin) {
+        return;
+    }
+    // Videos (Range-Requests) nicht über den Cache leiten
+    if (request.headers.has('range')) {
+        return;
+    }
+
     event.respondWith(
-        caches.match(event.request)
+        fetch(request)
             .then(response => {
-                // Cache hit - gebe gecachte Version zurück
-                if (response) {
-                    return response;
+                if (response && response.status === 200 && response.type === 'basic') {
+                    const copy = response.clone();
+                    caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
                 }
-                
-                // Nicht im Cache - hole vom Server
-                return fetch(event.request).then(response => {
-                    // Prüfen ob gültige Response
-                    if (!response || response.status !== 200 || response.type !== 'basic') {
-                        return response;
-                    }
-                    
-                    // Clone für Cache
-                    const responseToCache = response.clone();
-                    
-                    caches.open(CACHE_NAME)
-                        .then(cache => {
-                            cache.put(event.request, responseToCache);
-                        });
-                    
-                    return response;
-                });
+                return response;
             })
+            .catch(() => caches.match(request))
     );
 });
 
-// Aktivierung - Alte Caches löschen
+// Aktivierung - alte Caches löschen und Kontrolle übernehmen
 self.addEventListener('activate', event => {
     event.waitUntil(
-        caches.keys().then(cacheNames => {
-            return Promise.all(
-                cacheNames.map(cacheName => {
-                    if (cacheName !== CACHE_NAME) {
-                        console.log('🗑️ Alten Cache löschen:', cacheName);
-                        return caches.delete(cacheName);
-                    }
-                })
-            );
-        })
+        caches.keys()
+            .then(names => Promise.all(
+                names.filter(name => name !== CACHE_NAME).map(name => caches.delete(name))
+            ))
+            .then(() => self.clients.claim())
     );
 });
