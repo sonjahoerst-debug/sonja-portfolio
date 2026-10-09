@@ -3571,3 +3571,44 @@ footer {
         transition: none;
     }
 }
+
+/* Hero-Animation: Breite des fetten Wortes vorab reservieren, damit nichts springt */
+.text-animate-bold .word {
+    position: relative;
+}
+
+.text-animate-bold .word::after {
+    content: attr(data-text);
+    display: block;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    font-weight: 700;
+    pointer-events: none;
+}
+
+/* Verschachteltes "Hörst." und fehlende Verzögerungen (Wort 23/24) korrigieren */
+.text-animate-bold .hero-lastname .word:nth-of-type(1) { animation-delay: 0.8s; }
+.text-animate-bold .word:nth-of-type(23) { animation-delay: 4.4s; }
+.text-animate-bold .word:nth-of-type(24) { animation-delay: 4.6s; }
+
+/* Wörter bleiben vor ihrer Animation dünn */
+.text-animate-bold .word {
+    animation-fill-mode: both;
+}
+
+/* Mobil: ruhiger Textfluss ohne harte Zeilenumbrüche */
+@media (max-width: 768px) {
+    .hero-content h1 br {
+        display: none;
+    }
+
+    .hero-content h1 {
+        text-wrap: pretty;
+    }
+}
+
+/* Kachel-Titel größer */
+.portfolio-overlay h3 {
+    font-size: clamp(1.9rem, 4vw, 3.3rem);
+}
