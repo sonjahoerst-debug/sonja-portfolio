@@ -149,14 +149,48 @@ header {
     opacity: 0.7;
 }
 
-/* Barrierefreiheit: Zustand nicht nur über Deckkraft, sondern auch per Unterstreichung erkennbar */
-.nav-menu a:hover,
-.nav-menu a:focus-visible,
-.logo a:hover,
-.logo a:focus-visible {
-    text-decoration: underline;
-    text-underline-offset: 0.25em;
-    text-decoration-thickness: 1px;
+/* Barrierefreiheit: Zustand nicht nur über Deckkraft, sondern auch über eine gewellte Linie erkennbar */
+.nav-menu a,
+.logo a {
+    position: relative;
+}
+
+.nav-menu a::after,
+.logo a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.45em;
+    height: 6px;
+    opacity: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='6' viewBox='0 0 12 6'%3E%3Cpath d='M0 3 Q3 0 6 3 T12 3' fill='none' stroke='%234845e4' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-position: 0 center;
+    transition: opacity 0.2s ease;
+}
+
+.nav-menu a:hover::after,
+.nav-menu a:focus-visible::after,
+.logo a:hover::after,
+.logo a:focus-visible::after {
+    opacity: 1;
+    animation: navWave 0.6s linear 3;
+}
+
+@keyframes navWave {
+    from { background-position: 0 center; }
+    to   { background-position: 12px center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .nav-menu a:hover::after,
+    .nav-menu a:focus-visible::after,
+    .logo a:hover::after,
+    .logo a:focus-visible::after {
+        animation: none;
+    }
 }
 
 /* Hero Section */
