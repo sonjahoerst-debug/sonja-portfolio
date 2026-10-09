@@ -31,31 +31,50 @@
     <link rel="preload" href="css/styles.css" as="style">
     <link rel="stylesheet" href="css/styles.css">
     <style>
-        /* Desktop: Kompakte Gallery ohne Abstände */
-        .project-gallery {
-            padding: 0 !important;
-            margin: 0 !important;
-        }
-        
-        .gallery-grid {
-            gap: 0 !important;
-            padding: 0 !important;
-            margin: 0 !important;
-        }
-        
-        .gallery-item {
-            padding: 0 !important;
-            margin: 0 !important;
-            background: none !important;
-            border: none !important;
-        }
-        
-        .gallery-item img {
-            padding: 0 !important;
-            margin: 0 !important;
-            display: block !important;
-            width: 100% !important;
-            height: auto !important;
+        /* Desktop: 3 gleich große, quadratische Bilder auf einer Höhe, gleichmäßige Abstände */
+        @media (min-width: 1025px) {
+            html.project-3 .project-gallery {
+                padding: 0 2rem 4rem !important;
+                margin: 0 !important;
+            }
+
+            html.project-3 .gallery-grid {
+                max-width: 1600px;
+                margin: 0 auto !important;
+                padding: 0 !important;
+                gap: 1.5rem !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                align-items: start !important;
+                min-height: 0 !important;
+            }
+
+            html.project-3 .gallery-item {
+                padding: 0 !important;
+                margin: 0 !important;
+                height: auto !important;
+                aspect-ratio: 1 / 1 !important;
+                background: none !important;
+                border: none !important;
+                overflow: hidden;
+                display: block !important;
+            }
+
+            html.project-3 .gallery-item picture {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+
+            html.project-3 .gallery-item img {
+                padding: 0 !important;
+                margin: 0 !important;
+                display: block !important;
+                width: 100% !important;
+                height: 100% !important;
+                max-height: none !important;
+                object-fit: contain !important;
+                object-position: center !important;
+            }
         }
         
         /* Mobile: Ultra-kompakte Gallery für diese Seite */
