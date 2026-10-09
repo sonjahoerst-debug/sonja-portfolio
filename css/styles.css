@@ -87,7 +87,8 @@ header {
     position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(72, 69, 228, 0.18);
+    box-shadow: 0 4px 18px rgba(72, 69, 228, 0.10);
 }
 
 /* Weiße Navigation für alle Seiten außer Index */
