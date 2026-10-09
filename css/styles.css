@@ -1746,12 +1746,31 @@ footer {
         padding: 0;
     }
 
-    .project-7 .gallery-grid-three .gallery-item-contain:first-child {
-        padding-top: 3rem;
-    }
-
     .project-7 .gallery-grid .gallery-item {
         padding: 0;
+    }
+
+    /* Alle Bilder einer Reihe auf gleicher Höhe und mittig ausgerichtet */
+    .project-7 .gallery-grid-three .gallery-item-contain,
+    .project-7 .gallery-grid-three .gallery-item-contain:first-child {
+        align-items: center;
+        padding: 0;
+    }
+
+    .project-7 .gallery-grid-three .gallery-item-contain:first-child picture,
+    .project-7 .gallery-item-contain picture {
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .project-7 .gallery-item-contain img,
+    .project-7 .gallery-item-contain picture img {
+        width: 100%;
+        height: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        object-position: center;
     }
 }
 
