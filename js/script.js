@@ -261,8 +261,11 @@ const emailPopupClose = document.querySelector('.email-popup-close');
 
 if (emailPopup) {
     // Funktion zum Öffnen des Popups
+    let lastFocusedElement = null;
+
     function openEmailPopup(e) {
         e.preventDefault();
+        lastFocusedElement = document.activeElement;
         emailPopup.classList.add('active');
         emailPopup.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
@@ -304,7 +307,31 @@ if (emailPopup) {
         emailPopup.classList.remove('active');
         emailPopup.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
+        // Fokus zurück zum auslösenden Element
+        if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+            lastFocusedElement.focus();
+        }
     }
+
+    // Fokus im Popup halten (Tab-Falle) und Leertaste für role="button"
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Tab' && emailPopup.classList.contains('active')) {
+            const focusable = emailPopup.querySelectorAll('button, a[href]');
+            if (!focusable.length) return;
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        }
+        if (e.key === ' ' && document.activeElement && document.activeElement.classList.contains('email-placeholder')) {
+            openEmailPopup(e);
+        }
+    });
 
     // Initial aria-hidden setzen
     emailPopup.setAttribute('aria-hidden', 'true');
@@ -316,4 +343,10 @@ if (heroVideo) {
     heroVideo.playbackRate = 0.5;
 }
 
-console.log('Portfolio Website geladen - Emma Wagner');
+// Barrierefreiheit: Autoplay-Videos pausieren, wenn reduzierte Bewegung gewünscht ist
+if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('video[autoplay]').forEach(function(video) {
+        video.removeAttribute('autoplay');
+        video.pause();
+    });
+}

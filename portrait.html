@@ -321,10 +321,39 @@
                 transform: scale(1) !important;
             }
         }
+        /* Barrierefreiheit: Skip-Link und Fokus-Anzeige */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #4845e4;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            z-index: 10000;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid #4845e4;
+            outline-offset: 2px;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
     </style>
 </head>
 <body>
-    <nav class="nav-bar">
+    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+
+    <nav class="nav-bar" aria-label="Hauptnavigation">
         <div class="nav-content">
             <a href="index.html" class="logo">Sonja Hörst</a>
             <ul class="nav-links">
@@ -336,6 +365,7 @@
         </div>
     </nav>
 
+    <main id="main-content">
     <div class="page-header">
         <h1>PORTRAITS</h1>
         <p>
@@ -393,6 +423,8 @@
             </div>
         </div>
     </div>
+
+    </main>
 
     <footer>
         <p>&copy; 2025 Sonja Hörst. Alle Rechte vorbehalten.</p>
