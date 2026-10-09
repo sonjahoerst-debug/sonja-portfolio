@@ -107,8 +107,6 @@ if (isMobile) {
     slides = document.querySelectorAll('.slide.desktop-slide');
 }
 
-console.log('Found ' + slides.length + ' slides');
-
 if (slides.length > 0) {
     // Erstelle Dots für jede Slide
     slides.forEach((_, index) => {
