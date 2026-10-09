@@ -350,3 +350,27 @@ if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').m
         video.pause();
     });
 }
+
+// Pause/Play-Button für Hero-Videos
+document.querySelectorAll('.hero-video-toggle').forEach(function(btn) {
+    const video = btn.parentElement.querySelector('video');
+    if (!video) return;
+
+    function update() {
+        const paused = video.paused;
+        btn.setAttribute('aria-label', paused ? 'Hintergrundvideo abspielen' : 'Hintergrundvideo pausieren');
+        btn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+        btn.firstElementChild.textContent = paused ? '▶' : '❚❚';
+    }
+
+    btn.addEventListener('click', function() {
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+        }
+    });
+    video.addEventListener('play', update);
+    video.addEventListener('pause', update);
+    update();
+});
