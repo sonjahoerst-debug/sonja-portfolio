@@ -1717,6 +1717,44 @@ footer {
     align-items: flex-end;
 }
 
+/* Project 7 Desktop: engere vertikale Abstände, Galerie bündig zur Textbreite */
+@media (min-width: 769px) {
+    .project-7 .project-hero-contain {
+        padding-bottom: 1rem;
+    }
+
+    .project-7 .project-info {
+        padding-bottom: 2rem;
+    }
+
+    .project-7 .project-gallery {
+        padding: 0 2rem 0;
+    }
+
+    .project-7 .project-gallery + .project-gallery {
+        padding-top: 0;
+    }
+
+    .project-7 .gallery-grid,
+    .project-7 .gallery-grid-three {
+        max-width: 1100px;
+        gap: 2rem;
+    }
+
+    .project-7 .gallery-grid-three .gallery-item {
+        height: 600px;
+        padding: 0;
+    }
+
+    .project-7 .gallery-grid-three .gallery-item-contain:first-child {
+        padding-top: 3rem;
+    }
+
+    .project-7 .gallery-grid .gallery-item {
+        padding: 0;
+    }
+}
+
 /* Project 8 specific styles */
 .project-8 .project-hero-image {
     object-position: center 30%;
