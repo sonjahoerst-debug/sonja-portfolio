@@ -1,7 +1,7 @@
 // Service Worker für nachhaltiges Caching
 // Strategie: Netzwerk zuerst (immer aktuelle Inhalte), Cache nur als Offline-Fallback
 
-const CACHE_NAME = 'sonja-portfolio-v6';
+const CACHE_NAME = 'sonja-portfolio-v7';
 const urlsToCache = [
     '/css/styles.css',
     '/js/script.js',

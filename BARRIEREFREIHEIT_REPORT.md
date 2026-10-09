@@ -1,7 +1,52 @@
 # Barrierefreiheits-Audit Report
 **Website:** Sonja Hörst Portfolio  
-**Datum:** Januar 2025  
+**Datum:** Januar 2025 (aktualisiert am 9. Oktober 2026)  
 **Standard:** WCAG 2.1 Level AA
+
+## 🔄 Update 9. Oktober 2026
+
+**Prüfmethode:** Eigenes Python-Skript (`/tmp/audit.py`, nicht im Repo) über alle 17 HTML-Seiten plus Kontrastberechnung nach WCAG-Formel. **Lighthouse wurde nicht ausgeführt**, weil auf dem Rechner kein Node.js installiert ist. Das Skript ersetzt Lighthouse nicht (z. B. keine Prüfung von Rendering, Fokusreihenfolge oder Screenreader-Verhalten). Bitte Lighthouse in Chrome (DevTools → Lighthouse → Barrierefreiheit) einmal manuell laufen lassen und die Werte hier ergänzen.
+
+### Seit Januar 2025 ergänzt
+- Skip-Links und `<main id="main-content">` auf allen Seiten, auch Impressum, Datenschutz, Cookies, 404 und Portrait
+- E-Mail-Platzhalter als `role="button"` mit `aria-haspopup`; Popup mit Fokusfalle, Rückgabe des Fokus und Leertaste
+- Hero-Videos (Projekt 1 und 9) mit Pause/Play-Button (80 % Violett, weiße Schrift)
+- Bei `prefers-reduced-motion`: Autoplay-Videos pausiert, Hover-Bewegungen und Navigationswelle ohne Animation
+- Schriften lokal gehostet (`css/fonts.css`), keine Verbindung zu Google Fonts
+- Überschriften: Projektinfos jetzt `h2` statt `h3`; „Über mich“-Fragen `h2` statt `h3` (keine übersprungenen Ebenen)
+- Meta-Beschreibungen für Impressum, Datenschutz, Cookies und 404
+- `width`/`height` an Bildern gegen Layoutsprünge (nur 2 dynamische Lightbox-Bilder ohne)
+- Navigation: Hover/Fokus zusätzlich über gewellte violette Linie erkennbar, nicht nur über Deckkraft; Menüfarbe bleibt in allen Zuständen violett
+
+### Gemessene Kontraste
+| Kombination | Kontrast | AA (4,5:1) |
+|---|---|---|
+| Violett auf Weiß | 6,41:1 | ✅ |
+| Violett auf Rosa | 5,35:1 | ✅ |
+| Text #333 auf Weiß | 12,53:1 | ✅ |
+| Hero-Button: Weiß auf Violett 80 % (dunkler Hintergrund) | 8,67:1 | ✅ |
+| Hero-Button: Weiß auf Violett 80 % (heller Hintergrund) | 4,26:1 | ⚠️ knapp, Schrift ist groß/fett genug für AA (3:1) |
+| Nav-Hover bei 70 % Deckkraft | 3,14 – 3,44:1 | ❌ (behoben) |
+| Nav-Hover bei 90 % Deckkraft (neu) | 4,5 – 5,2:1 | ✅ |
+
+**Hinweis:** Die Werte weichen leicht von denen aus Januar 2025 ab (5,59 / 4,62), weil hier die tatsächliche Seitenfarbe `#fefefe` statt reinem Weiß verwendet wurde.
+
+### Ergebnis des Skripts nach den Korrekturen
+- `lang`, `title`, `description`: auf allen Seiten vorhanden
+- Genau eine `h1` und ein `<main>` pro Seite, Skip-Link überall vorhanden
+- Keine übersprungenen Überschriftenebenen
+- Alle Bilder haben ein `alt`-Attribut
+- Alle `target="_blank"`-Links haben `rel="noopener noreferrer"`
+- Keine Links oder Buttons ohne Namen
+
+### Noch offen / nicht geprüft
+- Lighthouse- bzw. axe-Lauf im Browser
+- Test mit Screenreader (VoiceOver) und auf dem Handy
+- Fokusreihenfolge und Zoom auf 200 % / 400 %
+- Ob Alt-Texte inhaltlich passend sind (das Skript prüft nur, ob sie vorhanden sind)
+- Videos ohne Untertitel/Transkript (die Content-Videos sind stumm; bei Ton wären Untertitel nötig)
+
+---
 
 ## ✅ Zusammenfassung
 
