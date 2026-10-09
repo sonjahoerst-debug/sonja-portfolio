@@ -374,3 +374,23 @@ document.querySelectorAll('.hero-video-toggle').forEach(function(btn) {
     video.addEventListener('pause', update);
     update();
 });
+
+// Über mich: violette Blubberblasen hinter dem schwimmenden Ananasfisch
+(function () {
+    var fish = document.querySelector('.fish-swimmer');
+    if (!fish || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    setInterval(function () {
+        if (document.hidden) return;
+        var r = fish.getBoundingClientRect();
+        if (getComputedStyle(fish).opacity === '0' || r.right < 0 || r.left > window.innerWidth) return;
+        var b = document.createElement('span');
+        var size = 8 + Math.random() * 16;
+        b.className = 'fish-bubble';
+        b.style.width = b.style.height = size + 'px';
+        b.style.left = (r.left + r.width * 0.12) + 'px';
+        b.style.top = (r.top + r.height * 0.45 + Math.random() * 20) + 'px';
+        b.style.setProperty('--drift', (Math.random() * 60 - 20) + 'px');
+        document.body.appendChild(b);
+        setTimeout(function () { b.remove(); }, 3300);
+    }, 450);
+})();
