@@ -149,6 +149,16 @@ header {
     opacity: 0.7;
 }
 
+/* Barrierefreiheit: Zustand nicht nur über Deckkraft, sondern auch per Unterstreichung erkennbar */
+.nav-menu a:hover,
+.nav-menu a:focus-visible,
+.logo a:hover,
+.logo a:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+    text-decoration-thickness: 1px;
+}
+
 /* Hero Section */
 .hero {
     background-color: var(--bg-color);
