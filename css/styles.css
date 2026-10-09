@@ -3613,60 +3613,44 @@ footer {
     font-size: clamp(1.9rem, 4vw, 3.3rem);
 }
 
-/* Ananasfisch schwimmt durch den Viewport (Über mich) */
-.fish-swimmer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: clamp(280px, 40vw, 620px);
-    pointer-events: none;
-    z-index: 50;
-    opacity: 0;
-    will-change: transform;
-    animation: fishSwim 16s linear 2s infinite;
-}
+/* Project 2 (Le Croissant) mobil: alle Bilder untereinander, mittig, nichts abgeschnitten */
+@media (max-width: 768px) {
+    .project-2 .gallery-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 1.5rem !important;
+    }
 
-.fish-swimmer img {
-    display: block;
-    width: 100%;
-    height: auto;
-    animation: fishBob 2.4s ease-in-out infinite;
-}
+    .project-2 .gallery-grid .gallery-item,
+    .project-2 .gallery-grid .gallery-item:nth-child(5) {
+        width: 100% !important;
+        max-width: 100% !important;
+        aspect-ratio: auto !important;
+        height: auto !important;
+        padding: 0 !important;
+        grid-column: auto !important;
+        justify-self: auto !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        overflow: visible !important;
+    }
 
-@keyframes fishSwim {
-    0%   { transform: translate(-40vw, 55vh); opacity: 1; }
-    25%  { transform: translate(5vw, 35vh); }
-    50%  { transform: translate(40vw, 60vh); }
-    75%  { transform: translate(75vw, 30vh); }
-    99%  { transform: translate(115vw, 50vh); opacity: 1; }
-    100% { transform: translate(115vw, 50vh); opacity: 0; }
-}
+    .project-2 .gallery-grid .gallery-item picture {
+        display: block !important;
+        width: 100% !important;
+    }
 
-@keyframes fishBob {
-    0%, 100% { transform: translateY(-8px) rotate(-2deg); }
-    50%      { transform: translateY(8px) rotate(2deg); }
-}
-
-.fish-bubble {
-    position: fixed;
-    pointer-events: none;
-    z-index: 49;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.7), rgba(72, 69, 228, 0.35) 60%, rgba(72, 69, 228, 0.55));
-    border: 1px solid rgba(72, 69, 228, 0.5);
-    box-shadow: 0 0 10px rgba(72, 69, 228, 0.25);
-    animation: bubbleRise 3.2s ease-in forwards;
-}
-
-@keyframes bubbleRise {
-    0%   { transform: translate(0, 0) scale(0.4); opacity: 0; }
-    15%  { opacity: 0.9; }
-    100% { transform: translate(var(--drift, 20px), -45vh) scale(1.1); opacity: 0; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .fish-swimmer,
-    .fish-bubble {
-        display: none !important;
+    .project-2 .gallery-grid .gallery-item img,
+    .project-2 .gallery-grid .gallery-item:nth-child(n) img {
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        margin: 0 auto !important;
+        object-fit: contain !important;
+        transform: none !important;
+        -webkit-transform: none !important;
+        -moz-transform: none !important;
     }
 }
