@@ -76,14 +76,14 @@
                 object-position: center !important;
                 transform-origin: center center !important;
                 /* Bilder haben viel transparenten Rand: vergrößern und Inhalt mittig ausrichten */
-                transform: translateY(16.5%) scale(1.7) !important;
-                -webkit-transform: translateY(16.5%) scale(1.7) !important;
+                transform: translateY(14.6%) scale(1.5) !important;
+                -webkit-transform: translateY(14.6%) scale(1.5) !important;
             }
 
             /* Drittes Bild (Mockup) hat den Inhalt weiter unten im Bild: gleiche Höhe herstellen */
             html.project-3 .gallery-item:nth-child(3) img {
-                transform: translateY(-0.9%) scale(1.7) !important;
-                -webkit-transform: translateY(-0.9%) scale(1.7) !important;
+                transform: translateY(-0.8%) scale(1.5) !important;
+                -webkit-transform: translateY(-0.8%) scale(1.5) !important;
             }
         }
         
@@ -120,6 +120,35 @@
                 width: 100% !important;
                 height: auto !important;
                 max-height: none !important;
+            }
+
+            /* Mobile: transparente Ränder der Quadrat-Bilder abschneiden, damit die
+               vertikalen Abstände zwischen den Bildern kleiner werden */
+            html.project-3 .gallery-grid .gallery-item {
+                position: relative !important;
+                aspect-ratio: 100 / 85 !important;
+                overflow: hidden !important;
+            }
+
+            html.project-3 .gallery-grid .gallery-item picture {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: block;
+            }
+
+            html.project-3 .gallery-grid .gallery-item img {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover !important;
+                object-position: center 0% !important;
+            }
+
+            /* Drittes Bild: Inhalt liegt weiter unten im Bild */
+            html.project-3 .gallery-grid .gallery-item:nth-child(3) img {
+                object-position: center 53% !important;
             }
         }
     </style>
