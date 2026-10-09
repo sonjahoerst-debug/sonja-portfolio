@@ -3615,15 +3615,15 @@ footer {
 
 /* Project 2 (Le Croissant) mobil: alle Bilder untereinander, mittig, nichts abgeschnitten */
 @media (max-width: 768px) {
-    .project-2 .gallery-grid {
+    html.project-2 .gallery-grid {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         gap: 1.5rem !important;
     }
 
-    .project-2 .gallery-grid .gallery-item,
-    .project-2 .gallery-grid .gallery-item:nth-child(5) {
+    html.project-2 .gallery-grid .gallery-item,
+    html.project-2 .gallery-grid .gallery-item:nth-child(5) {
         width: 100% !important;
         max-width: 100% !important;
         aspect-ratio: auto !important;
@@ -3637,13 +3637,13 @@ footer {
         overflow: visible !important;
     }
 
-    .project-2 .gallery-grid .gallery-item picture {
+    html.project-2 .gallery-grid .gallery-item picture {
         display: block !important;
         width: 100% !important;
     }
 
-    .project-2 .gallery-grid .gallery-item img,
-    .project-2 .gallery-grid .gallery-item:nth-child(n) img {
+    html.project-2 .gallery-grid .gallery-item img,
+    html.project-2 .gallery-grid .gallery-item:nth-child(n) img {
         width: 100% !important;
         height: auto !important;
         max-height: none !important;
