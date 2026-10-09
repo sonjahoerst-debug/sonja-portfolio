@@ -1566,7 +1566,7 @@ footer {
     height: 44px;
     border: none;
     border-radius: 50%;
-    background: rgba(72, 69, 228, 0.65);
+    background: rgba(72, 69, 228, 0.8);
     color: #fff;
     font-size: 0.9rem;
     line-height: 1;
@@ -1580,7 +1580,7 @@ footer {
 
 .hero-video-toggle:hover,
 .hero-video-toggle:focus-visible {
-    background: rgba(72, 69, 228, 0.9);
+    background: rgba(72, 69, 228, 0.95);
 }
 
 .project-hero-fullscreen {
@@ -2067,7 +2067,7 @@ footer {
     align-items: start;
 }
 
-.project-meta h3 {
+.project-meta h2 {
     color: var(--primary-color);
     font-size: 1rem;
     font-weight: 600;
@@ -2833,7 +2833,7 @@ footer {
         text-align: center;
     }
     
-    .project-meta h3 {
+    .project-meta h2 {
         text-align: center;
     }
     
@@ -3000,11 +3000,11 @@ footer {
         margin-top: 0 !important;
     }
     
-    .project-meta h3 {
+    .project-meta h2 {
         margin: 0 0 1.5rem 0 !important;
     }
     
-    .project-meta h3:last-child {
+    .project-meta h2:last-child {
         margin-bottom: 0 !important;
     }
     
@@ -3537,5 +3537,37 @@ footer {
     
     .slide img:hover {
         transform: none !important;
+    }
+}
+
+/* Layout-sicher: width/height-Attribute dienen nur dem Seitenverhaeltnis (null Spezifitaet) */
+:where(img[width][height]) {
+    height: auto;
+}
+
+/* Staerkerer Hover/Fokus-Zustand (Bilder bleiben unveraendert, nichts wird abgeschnitten) */
+.portfolio-item:focus-within .portfolio-overlay {
+    opacity: 1;
+}
+
+.portfolio-overlay h3 {
+    transform: translateY(10px);
+    transition: transform 0.4s ease;
+}
+
+.portfolio-item:hover .portfolio-overlay h3,
+.portfolio-item:focus-within .portfolio-overlay h3 {
+    transform: translateY(0);
+}
+
+.portfolio-item:focus-within {
+    outline: 3px solid var(--primary-color);
+    outline-offset: -3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .portfolio-overlay h3 {
+        transform: none;
+        transition: none;
     }
 }
